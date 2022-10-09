@@ -6,6 +6,6 @@ print(f"This is my list: {my_list}")
 
 my_str = ""
 for i in my_list:
-    my_str += str(i) + " "
+    my_str += str(i)
     
 print(f"This is my new string: {my_str}")
