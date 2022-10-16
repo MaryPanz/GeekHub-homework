@@ -19,7 +19,7 @@ def write_length(s):
         for i in s:
             if i.isdigit():
                 sum_all += int(i)
-            else:
+            elif i.isalpha():
                 all_letters += i             
         print(f"Sum of all numbers: {sum_all} Only letters: {all_letters}")
     else: 
