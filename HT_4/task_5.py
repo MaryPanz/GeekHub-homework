@@ -30,6 +30,8 @@ def calculate():
                 print(num1 ** num2)
     except ValueError:
         print("You didn't type a correct number!")
+    except ZeroDivisionError:
+        print("\nCan't divide by zero!!!")
         
 calculate()
     
