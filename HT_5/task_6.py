@@ -4,3 +4,16 @@
    Наприклад:
    fnc([1, 2, 3, 4, 5], shift=1) --> [5, 1, 2, 3, 4]
    fnc([1, 2, 3, 4, 5], shift=-2) --> [3, 4, 5, 1, 2]"""
+
+
+from collections import deque
+
+my_list = [1,2,3,4,5]
+shift = 1
+
+def my_shift(my_list, shift):
+    new_list = deque(my_list)
+    new_list.rotate(shift)
+    print(new_list)
+    
+my_shift(my_list, shift)
