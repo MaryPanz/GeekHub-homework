@@ -4,15 +4,17 @@
 необов'язковим і має значення по замовчуванню <10> (10%).
 Функція повинна принтануть суму, яка буде на рахунку, а також її повернути (але округлену до копійок)."""
 
-def bank():
-    money = int(input("Money: "))
-    years = int(input("Years: "))
+money = int(input("Money: "))
+years = int(input("Years: "))
+
+def bank(money, years):
+    
     percent = 0.1
+    amount = 0
     
     for i in range(years):
-        amount = money * (pow((1 + 0.1/1), 1 * (i + 1)))
+        amount = money * (pow((1 + 0.1), 1 * (i + 1)))
         result = "{:.2f}".format(amount)
-        print(f"Total: ${amount}")
     return f"Total: ${result}"
   
-print(bank())
+print(bank(money, years))
