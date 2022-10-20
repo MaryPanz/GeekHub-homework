@@ -18,7 +18,7 @@ def element_occurrences(n):
     print(n)
 
     index = pd.Index(n)
-    print(index.value_counts())
+    print(index.value_counts().to_string())
 
 
 element_occurrences(n)
