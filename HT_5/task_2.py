@@ -8,6 +8,7 @@ money = int(input("Money: "))
 years = int(input("Years: "))
 
 def bank(money, years, percent = 0.1):
+    
     try:
         for i in range(years):
             result = "{:.2f}".format(money * (pow((1 + percent), 1 * (i + 1))))
