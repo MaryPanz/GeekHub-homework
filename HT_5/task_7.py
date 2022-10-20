@@ -4,7 +4,9 @@
 
 import pandas as pd
 
+
 n = [1, 1, 'foo', [1, 2], True, 'foo', 1, [1, 2], False]
+
 
 def element_occurrences(n):
 
@@ -17,5 +19,6 @@ def element_occurrences(n):
 
     index = pd.Index(n)
     print(index.value_counts())
+
 
 element_occurrences(n)
