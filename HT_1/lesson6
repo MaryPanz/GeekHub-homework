@@ -91,3 +91,53 @@ def say_name(name):
 say_my_name(input("Name: "))
 say_name(input("Name: "))
   
+# from functools import wraps
+
+
+name = "Tom"
+
+def say_hello():
+    
+    def say():
+        
+        a = 10
+        name = 'Harry'
+        print(a)
+        print(name)
+        print(f"Hello, {name}")
+    say()
+print(f"Hello, {name}")
+say_hello()
+
+name = "Tom"
+marks = {"math": 5}
+print(marks)
+def say_hello():
+    marks = {"math": 2}
+    
+    def say():
+        nonlocal marks
+        print(marks)
+        a = 10
+        name = 'Harry'
+        print(a)
+        print(name)
+        print(f"Hello, {name}")
+    say()
+    print(f"Hello, {name}")
+say_hello()
+
+#local
+#nonlocal on the function level
+#global for all the prog
+#better not to use
+
+def some_input():
+    a = input("Sentence: ")
+    if ';' in a:
+        raise
+    print("Yes!")
+try:
+    some_input()
+except:
+    print("no!")
