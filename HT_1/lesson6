@@ -1,0 +1,93 @@
+def my_decorator(function):
+  
+    def wrapper():
+        print("before")
+    function()
+    print("After")
+  
+    return wrapper
+   
+@my_decorator   
+def say_my_name():
+    
+    print("Hi")
+    return
+
+say_my_name()
+
+
+def my_decorator(function):
+  
+    def wrapper():
+        print("before")
+    function()
+    print("After")
+  
+    return wrapper
+def my_decorator2(function):
+  
+    def wrapper():
+        print("before")
+    function()
+    print("After")
+  
+    return wrapper   
+@my_decorator  
+@my_decorator2
+def say_my_name():
+    
+    print("Hi")
+    return
+
+say_my_name()
+
+
+def my_decorator(function):
+  #kortezh slovnik
+    def wrapper(*args, **kwargs):
+        print("before")
+        print(*args)
+        print(**kwargs)
+        function(*args, **kwargs)
+        print("After")
+  
+    return wrapper
+    
+ 
+@my_decorator
+
+def say_my_name(name):
+    
+    print(f"Hi {name}")
+    return
+
+say_my_name(input("Name: "))
+
+  
+  
+  def ssuper_decorator(dec_1, dec_2):
+    
+    def my_decorator(function):
+        print(f"initialize {dec_1}, {dec_2}")
+            #kortezh slovnik
+        def wrapper(*args, **kwargs):
+            print("before")
+            print(f"{dec_1} {dec_2}")
+            function(*args, **kwargs)
+            print("After")
+  
+        return wrapper
+    return my_decorator
+@ssuper_decorator("Cat", "Dog")
+def say_my_name(name):
+    print(f"Hi {name}")
+    return
+
+@ssuper_decorator("C", "D")
+def say_name(name):
+    print(f"Hi {name}")
+    return
+
+say_my_name(input("Name: "))
+say_name(input("Name: "))
+  
