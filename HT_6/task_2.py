@@ -17,4 +17,4 @@ def validate(name, password):
     else:
         print("Valid!")
     
-(validate(name, password))
+validate(name, password)
