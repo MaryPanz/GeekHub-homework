@@ -4,7 +4,7 @@ password = input("Password: ")
 
 def validate(name, password):
     
-    if len(name) > 5:
+    if len(name) > 50:
         print("The name must be smaller than 50 symbols")
     if len(name) < 3:
         print("The name must be bigger than 2 symbols")
