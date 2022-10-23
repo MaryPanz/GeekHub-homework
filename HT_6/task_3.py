@@ -12,13 +12,10 @@
 
 
 
-class Error(Exception):
+class LoginNameError(Exception):
     pass
 
-class LoginNameError(Error):
-    pass
-
-class LoginPassError(Error):
+class LoginPassError(Exception):
     pass
 
 def status():
@@ -50,7 +47,6 @@ def status():
             print("The password can't be less than 8 digits, should have a number and an uppercase letter\n")
             
 status()
-
 
 
 
