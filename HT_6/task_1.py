@@ -13,7 +13,7 @@ class LoginException(Exception):
   
 
 username = input("Your username: ")
-password = (input("Your password: "))
+password = input("Your password: ")
 
 
 def my_users(username, password, silent = False):
@@ -26,7 +26,7 @@ def my_users(username, password, silent = False):
             if my_users_list[i] == user_pass:
                 silent = True
                 if silent:
-                    print(silent)
+                    print(False)
                     break
         else:
             raise LoginException
