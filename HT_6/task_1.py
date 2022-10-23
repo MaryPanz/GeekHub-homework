@@ -7,7 +7,6 @@
         якщо silent == True - функція повертає False
         якщо silent == False - породжується виключення LoginException (його також треба створити =))"""
 
-
 class LoginException(Exception):
     pass
   
@@ -22,12 +21,10 @@ def my_users(username, password, silent = False):
     user_pass = [username, password]
     
     try:    
-        for i, k in enumerate(my_users_list):
-            if my_users_list[i] == user_pass:
-                silent = True
-                if silent:
-                    print(False)
-                    break
+        if user_pass in my_users_list:
+            silent = True
+            if silent:
+                print(False)
         else:
             raise LoginException
             
