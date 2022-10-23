@@ -16,7 +16,6 @@ def my_users(username, password, silent = False):
     
     try:    
         for i in range(len(my_users_list)):
-            #if (username == i and password == i):
             if(my_users_list[i] == user_pass):
                 silent = True
                 print(silent)
