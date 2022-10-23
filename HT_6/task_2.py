@@ -6,6 +6,43 @@
    Якщо якийсь із параметрів не відповідає вимогам - породити виключення із відповідним текстом."""
 
 
+class LoginNameError(Exception):
+    pass
+
+class LoginPassError(Exception):
+    pass     
+
+name = input("Name: ")
+password = input("Password: ")
+
+
+def validate(name, password):
+    
+    try:
+        if len(name) < 3 or len(name) > 50:
+            raise LoginNameError
+        elif len(password) < 8:
+            raise LoginPassError
+        elif not any(i.isdigit() for i in password):
+            raise LoginPassError
+        elif not any(i.isupper() for i in password):
+            raise LoginPassError
+        else:
+            print("Valid!\n")
+                
+    except LoginNameError:
+        print("The name must be from 3-50 symbols\n")
+    except LoginPassError:
+        print("The password can't be less than 8 digits, should have a number and an uppercase letter\n")
+            
+validate(name, password)
+
+
+
+
+
+
+"""Without try/except
 
 name = input("Name: ")
 password = input("Password: ")
@@ -27,3 +64,4 @@ def validate(name, password):
         print("Valid!")
     
 validate(name, password)
+"""
