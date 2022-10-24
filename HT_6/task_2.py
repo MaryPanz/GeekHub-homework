@@ -5,7 +5,43 @@
    - якесь власне додаткове правило :)
    Якщо якийсь із параметрів не відповідає вимогам - породити виключення із відповідним текстом."""
 
+class LoginNameError(ValueError):
+    pass
 
+
+class LoginPassError(ValueError):
+    pass
+
+
+name = input("Name: ")
+password = input("Password: ")
+
+
+def validate(name, password):
+
+    
+    if len(name) < 3 or len(name) > 50:
+        raise LoginNameError(f"Your name: {name} must be bigger than 2 and smaller than 50 symbols")
+    elif len(password) < 8:
+        raise LoginPassError(f"Your password: {password} can't be less than 8 digits")
+    elif not any(i.isdigit() for i in password):
+        raise LoginPassError(f"Your password: {password} should have a number")
+    elif not any(i.isupper() for i in password):
+        raise LoginPassError(f"Your password: {password} should have an uppercase letter")
+    else:
+        print("Valid!\n")
+
+
+validate(name, password)
+
+
+
+
+
+
+
+
+"""with try except
 class LoginNameError(Exception):
     pass
 
@@ -44,7 +80,7 @@ validate(name, password)
 
 
 
-"""Without try/except
+Without try/except
 
 name = input("Name: ")
 password = input("Password: ")
