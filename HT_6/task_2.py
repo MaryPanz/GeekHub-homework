@@ -9,15 +9,17 @@
 class LoginNameError(Exception):
     pass
 
+
 class LoginPassError(Exception):
-    pass     
+    pass
+
 
 name = input("Name: ")
 password = input("Password: ")
 
 
 def validate(name, password):
-    
+
     try:
         if len(name) < 3 or len(name) > 50:
             raise LoginNameError
@@ -29,14 +31,14 @@ def validate(name, password):
             raise LoginPassError
         else:
             print("Valid!\n")
-                
+
     except LoginNameError:
         print("The name must be from 3-50 symbols\n")
     except LoginPassError:
         print("The password can't be less than 8 digits, should have a number and an uppercase letter\n")
-            
-validate(name, password)
 
+
+validate(name, password)
 
 
 
