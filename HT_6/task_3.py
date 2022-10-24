@@ -11,6 +11,7 @@
       Status: OK   P.S. Не забудьте використати блок try/except ;)"""
 
 
+
 class LoginNameError(Exception):
     pass
 
@@ -31,22 +32,22 @@ def status():
         print("Password:", password)
         print("Status: ",end="")
 
+        
         try:
             if len(name) < 3 or len(name) > 50:
-                raise LoginNameError
+                raise LoginNameError("The name must be from 3-50 symbols\n")
             elif len(password) < 8:
-                raise LoginPassError
+                raise LoginPassError("The password must be bigger than 8 symbols\n")
             elif not any(i.isdigit() for i in password):
-                raise LoginPassError
+                raise LoginPassError("The password must have a number\n")
             elif not any(i.isupper() for i in password):
-                raise LoginPassError
+                raise LoginPassError("The password must have an uppercase letter\n")
             else:
                 print("Valid!\n")
 
-        except LoginNameError:
-            print("The name must be from 3-50 symbols\n")
-        except LoginPassError:
-            print("The password can't be less than 8 digits, should have a number and an uppercase letter\n")
-
+        except LoginNameError as ex:
+            print(ex)
+        except LoginPassError as ex:
+            print(ex)
 
 status()
