@@ -21,14 +21,14 @@ def my_users(username, password, silent=False):
 
     try:
         if user_pass in my_users_list:
-            print(True)
+            return True
         else:
             if silent == True:
-                print(False)
+                return False
             else:
                 raise LoginException("Your username/password is incorrect!")
     except LoginException as e:
-        print(e)
+        return(e)
 
 
-my_users(username, password, silent=False)
+print(my_users(username, password, silent=False))
