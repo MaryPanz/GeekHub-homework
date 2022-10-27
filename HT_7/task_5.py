@@ -13,11 +13,6 @@
     "aA11" -> 2             # 'a' і '1'
     "ABBA" -> 2             # 'A' і 'B' кожна двічі"""
 
-
-from collections import Counter
-
-
-
 words = "ABBA"
 print(f"The word {words} consists of")
 
