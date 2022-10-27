@@ -38,15 +38,15 @@ def my_range(*args):
         start, stop, step = args[0], args[1], args[2]
 
         
-    if step > 0:  # step arg is increasing
+    if step > 0:  # +2
         while start < stop:
             yield start
             start += step
         return start
-    elif step < 0:  # step arg is decreasing
+    elif step < 0:  # -2...
         while start > stop:
             yield start
-            start += step  # Adding a negative to decrease
+            start += step
         return start
             
 for i in my_range(2,20,3):
