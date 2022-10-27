@@ -11,7 +11,7 @@
     "indivisibility" -> 1   # 'i' присутнє 6 разів
     "Indivisibilities" -> 2 # 'i' присутнє 7 разів та 's' двічі
     "aA11" -> 2             # 'a' і '1'
-    "ABBA" -> 2             # 'A' і 'B' кожна двічі""
+    "ABBA" -> 2             # 'A' і 'B' кожна двічі"""
 
 
 from collections import Counter
