@@ -23,6 +23,9 @@ def my_generator(something):
 
     while True:
         for i in something:
-            print(i)
-
+            yield i
 my_generator(something)
+
+
+for i in my_generator(something):
+    print(i)
