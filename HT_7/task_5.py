@@ -13,22 +13,12 @@
     "aA11" -> 2             # 'a' і '1'
     "ABBA" -> 2             # 'A' і 'B' кожна двічі"""
 
-words = "ABBA"
-print(f"The word {words} consists of")
-
+words = "aA11"
 
 def my_count(words):
-
-
-    counts = {}
-    for letter in words:
-        counts.setdefault(letter,0)
-        counts[letter] += 1
-
-    for key in counts:
-        if counts[key] > 1:
-            return("%d letters/numbers %s" % (counts[key], key))
-        else:
-            return("0 double occurences for %s" % key)    
-
-print(my_count(words))
+    w = words.lower()
+    result = len(dict((i, w.count(i)) for i in w if w.count(i) > 1))
+        
+    return result
+  
+print(f"Your word: {words} has {(my_count(words))} letter/number occurences.")
