@@ -10,17 +10,20 @@ def main():
             name = input("Name: ")
             password = input("Password: ")
             if validate(name, password) == True:
-                print(f"Welcome {name}!")
+                print(f"Welcome, {name}!")
                 a = action()
+                balance(a, name)
                 t_w = change_balance(a,name)
-                top_up(t_w, name)
+                new_balance = top_up(t_w, name)
                 withdraw(t_w, name)
+                history_transaction(name, new_balance)
+                
                 break
 
             else:
                 print("Try!")
         except ValueError:
-            print("Somthing went wrong")
+            print("Something went wrong")
 
 
 def validate(name,password):
@@ -96,6 +99,7 @@ def top_up(t_w, name):
                 print("Your balance is:", new_balance)
                 txt_file.seek(0)
                 txt_file.write(str(new_balance))
+                return new_balance
         except FileNotFoundError:
             print("Text file does not exist!")        
     else:
@@ -114,16 +118,20 @@ def withdraw(t_w, name):
                     print("Your balance is:", new_balance)
                     txt_file.seek(0)
                     txt_file.write(str(new_balance))
+                    return new_balance
+                    
                 else:
                     print("The amount is too big!")
     
         except FileNotFoundError:
             print("Text file does not exist!")
 
+def history_transaction(name, new_balance):
+    with open(f"{name}_transaction.json") as js_file:
+        data  = json.load(js_file)
+        data = [f"{name}"].append(new_balance)
 
   
-
-
 
 
 
