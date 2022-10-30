@@ -9,29 +9,28 @@ def main():
         try:
             name = input("Name: ")
             password = input("Password: ")
+            
             if validate(name, password) == True:
-                print(f"Welcome, {name}!")
+                print(f"Welcome, {name}!\n")
                 a = action()
                 balance(a, name)
-                t_w = change_balance(a,name)
-                new_balance = top_up(t_w, name)
-                withdraw(t_w, name)
-                history_transaction(name, new_balance)
+                t_w = change_balance(a, name)
+                amount = top_up(t_w, name)
+                history_transaction(name, amount)
+                amount = withdraw(t_w, name)
+                history_transaction(name, amount)
                 
                 break
-
             else:
-                print("Try!")
+                print("Try again!")
         except ValueError:
-            print("Something went wrong")
+            print("Something went wrong!")
 
 
 def validate(name,password):
 
 
     try:
-        
-
         with open("users.csv", "r") as csvfile:
             csv_reader = csv.reader(csvfile)
             for row in csv_reader:
@@ -48,8 +47,11 @@ def validate(name,password):
     except FileNotFoundError:
         print("File does not exist!")
 
+        
 
 def action():
+    
+    
     print("1 Balance")
     print("2 Top up/Withdraw")
     print("3 Exit")
@@ -63,10 +65,11 @@ def action():
         
     else:
         print("Exit!")
-        return 3
 
 
 def balance(a, name):
+    
+    
     if a == 1:
         print("Your balance is: ")
         try:
@@ -79,16 +82,22 @@ def balance(a, name):
 
 
     else:
-        return False
+        print("Something went wrong")
 
+        
 def change_balance(a, name):
+    
+    
     if a == 2:
         t_w = int(input("For top up press 1, for withdraw press 2: "))
         return t_w
     else:
         return False
 
+    
 def top_up(t_w, name):
+    
+    
     if t_w == 1:
 
         try:
@@ -99,14 +108,16 @@ def top_up(t_w, name):
                 print("Your balance is:", new_balance)
                 txt_file.seek(0)
                 txt_file.write(str(new_balance))
-                return new_balance
+                return amount
         except FileNotFoundError:
             print("Text file does not exist!")        
     else:
         return False
+    
 
 def withdraw(t_w, name):
 
+    
     if t_w == 2:
         try:
             with open(f"{name}_balance.txt", "r+") as txt_file:
@@ -118,7 +129,7 @@ def withdraw(t_w, name):
                     print("Your balance is:", new_balance)
                     txt_file.seek(0)
                     txt_file.write(str(new_balance))
-                    return new_balance
+                    return amount
                     
                 else:
                     print("The amount is too big!")
@@ -126,15 +137,27 @@ def withdraw(t_w, name):
         except FileNotFoundError:
             print("Text file does not exist!")
 
-def history_transaction(name, new_balance):
-    with open(f"{name}_transaction.json") as js_file:
-        data  = json.load(js_file)
-        data = [f"{name}"].append(new_balance)
+            
+def history_transaction(name, amount):
+    
+    try:
+        
+        with open(f"{name}_transaction.json", "r") as js_file:
+        
+            data = json.load(js_file)
+            data.append({name: amount})
+        
+    
+        with open(f"{name}_transaction.json", "w") as j_file:
+            json.dump(data, j_file)
+            
+    except FileNotFoundError:
+            print("Text file does not exist!")
 
   
 
 
-
-
 if __name__ == "__main__":
     main()
+
+    
