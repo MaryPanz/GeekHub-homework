@@ -16,9 +16,12 @@
 words = "aA11"
 
 def my_count(words):
+
+
     w = words.lower()
     result = len(dict((i, w.count(i)) for i in w if w.count(i) > 1))
         
     return result
   
 print(f"Your word: {words} has {(my_count(words))} letter/number occurences.")
+
