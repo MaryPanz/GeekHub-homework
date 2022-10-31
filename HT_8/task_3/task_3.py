@@ -7,12 +7,12 @@ import json
 
 def main():
 
+    
     name = input("Name: ")
     password = input("Password: ")
     print(f"Welcome, {name}!\n")
 
     while True:
-            
         if validate(name, password) == True:
                 
             a = action()
@@ -58,10 +58,9 @@ def validate(name, password):
 
 
 def action():
+    
 
     try:
-    
-    
         print("1 Balance")
         print("2 Top up")
         print("3 Withdraw")
@@ -85,6 +84,8 @@ def action():
 
 
 def balance(a, name):
+    
+    
     if a == 1:
         try:
             with open(f"{name}_balance.txt") as txt_file:
@@ -93,7 +94,6 @@ def balance(a, name):
 
         except FileNotFoundError:
             print("Text file does not exist!")
-
 
     else:
         print("Something went wrong")
@@ -158,7 +158,6 @@ def withdraw(name):
 def history_transaction(name, amount):
 
 
-    
     with open(f"{name}_transaction.json", "r") as js_file:
         
         data = json.load(js_file)
