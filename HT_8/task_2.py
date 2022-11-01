@@ -18,23 +18,29 @@ def my_reader(my_file, number):
     if os.path.isfile(my_file):
 
         my_list = []
-        with open(my_file, "r") as file:
+        with open(my_file, "r", encoding="latin-1") as file:
             lines = file.read()
             if len(lines) < number:
-                print("The number is too small")
+                print("Incorrect number!")
+            elif number < 0:
+                print("Number below 0")
 
             else:
-                file.seek(0)
                 #first
+                file.seek(0)
                 my_list.append(file.read(number))
                 lines = file.read()
-                #middle
-                start = len(lines) // 2 - number // 2
-                my_list.append(lines[start:start + number])
-                #last
-                my_list.append((lines[-number:]))
 
-            print(my_list)
+            #middle
+                with open(my_file, "r") as file:
+                    lines = file.read()
+                    start = len(lines) // 2 - number // 2
+                    my_list.append(lines[start:start + number])
+
+                    #last
+                    my_list.append((lines[-number:]))
+
+                print(my_list)
     else:
         print("Something is wrong with the file!")
         
