@@ -24,22 +24,14 @@ def my_reader(my_file, number):
                 print("Incorrect number!")
             elif number < 0:
                 print("Number below 0")
-
-            else:
-                lines = file.read()
+            else: 
                 file.seek(0)
                 my_list.append(file.read(10))
-                
                 file.seek(0)
-                lines = file.read()
-                
                 start = len(lines) // 2 - number // 2
                 my_list.append(lines[start:start + number])
-
                 file.seek(0)
-                lines = file.read()
                 my_list.append(lines[-number:])
-
                 print(my_list)
     else:
         print("Something is wrong with the file!")
