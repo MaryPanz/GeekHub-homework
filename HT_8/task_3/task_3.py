@@ -1,6 +1,10 @@
 # To withdraw enter 100, not -100. Numbers < 0 will show a mistake.
 
 
+
+# To withdraw enter 100, not -100. Numbers < 0 will show a mistake.
+
+
 import csv
 import json
 
@@ -66,19 +70,8 @@ def action():
     print("2 Top up")
     print("3 Withdraw")
     print("4 Exit")
-
     number = int(input("Number: "))
-
-    if number == 1:
-        return 1
-    elif number == 2:
-        return 2
-    elif number == 3:
-        return 3
-    elif number == 4:
-        return 4
-    else:
-        return 5
+    return number
      
 
 def balance(a, name):
