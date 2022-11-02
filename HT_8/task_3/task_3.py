@@ -120,7 +120,6 @@ def withdraw(name):
                 txt_file.seek(0)
 
                 with open(f"{name}_balance.txt", "w") as txt_file:
-
                     txt_file.write(str(new_balance))
                     return amount
             else:
