@@ -26,7 +26,7 @@ def my_reader(my_file, number):
                 print("Number below 0")
             else: 
                 file.seek(0)
-                my_list.append(file.read(10))
+                my_list.append(file.read(number))
                 file.seek(0)
                 start = len(lines) // 2 - number // 2
                 my_list.append(lines[start:start + number])
