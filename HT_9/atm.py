@@ -112,7 +112,7 @@ def top_up(user, cursor, connection):
             cursor.execute("SELECT total FROM banknotes")
             total = cursor.fetchone()
             new_total = int("".join(map(str, total))) + amount
-            cursor.execute(f"UPDATE banknotes SET TOTAL = ?", (new_total,))
+            cursor.execute(f"UPDATE banknotes SET TOTAL = {new_total}")
             connection.commit()
             flag = "+"
             history_transaction(user, amount, connection, flag)
@@ -123,7 +123,7 @@ def top_up(user, cursor, connection):
             cursor.execute("SELECT total FROM banknotes")
             total = cursor.fetchone()
             new_total = int("".join(map(str, total))) + result
-            cursor.execute(f"UPDATE banknotes SET TOTAL = ?", (new_total,))
+            cursor.execute(f"UPDATE banknotes SET TOTAL = {new_total}")
             connection.commit()
             print(result)
             print("Change: 5")
@@ -150,7 +150,7 @@ def withdraw(user, cursor, connection):
             cursor.execute("SELECT total FROM banknotes")
             total = cursor.fetchone()
             new_total = int("".join(map(str, total))) - amount
-            cursor.execute(f"UPDATE banknotes SET TOTAL = ? ", (new_total,))
+            cursor.execute(f"UPDATE banknotes SET TOTAL = {new_total}")
             connection.commit()
             flag = "-"
             history_transaction(user, amount, connection, flag)
