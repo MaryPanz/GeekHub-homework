@@ -214,6 +214,8 @@ def admin_money_topup(cursor,connection):
 
 
 def admin_money_withdraw(cursor,connection):
+    
+    
     print("Withdraw for separate banknotes")
     banknote = int(input("You can type 10/20/50/100/200/500/1000: "))
     amount = int(input("How many? "))
