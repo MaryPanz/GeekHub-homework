@@ -117,7 +117,8 @@ def top_up(user, cursor, connection):
             flag = "+"
             history_transaction(user, amount, connection, flag)
         else:
-            result = result - 5
+            change = amount % 10
+            result = result - change
             cursor.execute("UPDATE bank SET balance = ? WHERE name = ?", (result, user,))
             # update total bank balance
             cursor.execute("SELECT total FROM banknotes")
@@ -125,8 +126,7 @@ def top_up(user, cursor, connection):
             new_total = int("".join(map(str, total))) + result
             cursor.execute(f"UPDATE banknotes SET TOTAL = {new_total}")
             connection.commit()
-            print(result)
-            print("Change: 5")
+            print(f"Change: {change}")
             return amount
     else:
         print("You entered a wrong value!")
